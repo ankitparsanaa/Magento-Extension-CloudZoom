@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* @package    Optimiseweb_CloudZoom
+* @author     Kathir Vel (sid@optimiseweb.co.uk)
+* @copyright  Copyright (c) 2013 Optimiseweb Ltd
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+
+    <modules>
+        <Optimiseweb_CloudZoom>
+            <version>0.1.6</version>
+        </Optimiseweb_CloudZoom>
+    </modules>
+
+    <frontend>
+
+        <layout>
+            <updates>
+                <cloudzoom>
+                    <file>optimiseweb_cloudzoom.xml</file>
+                </cloudzoom>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Optimiseweb_CloudZoom>
+                    <files>
+                        <default>Optimiseweb_CloudZoom.csv</default>
+                    </files>
+                </Optimiseweb_CloudZoom>
+            </modules>
+        </translate>
+
+    </frontend>
+
+    <adminhtml>
+        <menu>
+            <optimiseweball translate="title" module="cloudzoom">
+                <title>Optimise Web</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <cloudzoom translate="title" module="cloudzoom">
+                        <title>Cloud Zoom Settings</title>
+                        <sort_order>5</sort_order>
+                        <action>adminhtml/system_config/edit/section/optimisewebcloudzoom</action>
+                    </cloudzoom>
+                </children>
+            </optimiseweball>
+        </menu>
+    </adminhtml>
+
+    <global>
+
+        <blocks>
+            <cloudzoom>
+                <class>Optimiseweb_CloudZoom_Block</class>
+            </cloudzoom>
+            <catalog>
+                <rewrite>
+                    <product_view_media>Optimiseweb_CloudZoom_Block_Catalog_Product_View_Media</product_view_media>
+                </rewrite>
+            </catalog>
+        </blocks>
+
+        <helpers>
+            <cloudzoom>
+                <class>Optimiseweb_CloudZoom_Helper</class>
+            </cloudzoom>
+        </helpers>
+
+        <models>
+            <cloudzoom>
+                <class>Optimiseweb_CloudZoom_Model</class>
+            </cloudzoom>
+        </models>
+
+    </global>
+
+    <default>
+
+        <optimisewebcloudzoom>
+            <general>
+                <disableSmallImageZoom>1</disableSmallImageZoom>
+            </general>
+            <zoomImage>
+                <position>inside</position>
+                <smoothMove>1</smoothMove>
+            </zoomImage>
+            <slider>
+                <type>flexslider</type>
+            </slider>
+        </optimisewebcloudzoom>
+
+    </default>
+
+</config>

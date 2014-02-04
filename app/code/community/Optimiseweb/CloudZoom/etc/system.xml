@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* @package    Optimiseweb_CloudZoom
+* @author     Kathir Vel (sid@optimiseweb.co.uk)
+* @copyright  Copyright (c) 2013 Optimiseweb Ltd
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+
+    <tabs>
+        <optimisewebconfig translate="label comment" module="cloudzoom">
+            <label>Optimise Web</label>
+            <sort_order>0</sort_order>
+        </optimisewebconfig>
+    </tabs>
+
+    <sections>
+
+        <optimisewebcloudzoom translate="label comment" module="cloudzoom">
+            <label>Clould Zoom</label>
+            <tab>optimisewebconfig</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+
+                <general translate="label comment">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enable Clould Zoom</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <disableSmallImageZoom translate="label comment">
+                            <label>Disable Smaller Image Zooming</label>
+                            <comment>Disables zooming on images where the source image's dimensions are smaller than the displayed image. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disableSmallImageZoom>
+                        <disableImageZoom translate="label comment">
+                            <label>Disable Zooming</label>
+                            <comment>Disables image zooming for all images. Image swap will still work when clicking the gallery of images. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disableImageZoom>
+                    </fields>
+                </general>
+
+                <originalImage translate="label comment">
+                    <label>Main Image</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <imageWidth translate="label comment">
+                            <label>Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imageWidth>
+                        <imageHeight translate="label comment">
+                            <label>Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imageHeight>
+                        <lensOpacity translate="label comment">
+                            <label>Lens Opacity</label>
+                            <comment>Opacity of the lens mouse pointer, where 0 is fully transparent, and 1 is fully opaque. In tint and soft-focus modes, it will always be transparent.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_opacityrange</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lensOpacity>
+                        <tint translate="label comment">
+                            <label>Overlay Color</label>
+                            <comment>Specifies a tint colour which will cover the small image. Colours should be specified in hex format, e.g. '#aa00aa'. Does not work with softFocus.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tint>
+                        <tintOpacity translate="label comment">
+                            <label>Overlay Color Opacity</label>
+                            <comment>Opacity of the tint, where 0 is fully transparent, and 1 is fully opaque.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_opacityrange</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tintOpacity>
+                        <softFocus translate="label comment">
+                            <label>Soft Focus</label>
+                            <comment>Applies a subtle blur effect to the small image. Set to true or false. Does not work with tint.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </softFocus>
+                    </fields>
+                </originalImage>
+
+                <zoomImage translate="label comment">
+                    <label>Zoom Image</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <zoomWidth translate="label comment">
+                            <label>Width</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The width of the zoom window in pixels. If 'auto' is specified, the width will be the same as the small image.</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoomWidth>
+                        <zoomHeight translate="label comment">
+                            <label>Height</label>
+                            <comment>The height of the zoom window in pixels. If 'auto' is specified, the height will be the same as the small image.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoomHeight>
+                        <position translate="label comment">
+                            <label>Position</label>
+                            <comment>Specifies the position of the zoom window relative to the small image. The above Width and Height are ignored if the position is set to Inside Original Image.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_position</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </position>
+                        <adjustX translate="label comment">
+                            <label>X Position</label>
+                            <comment>Allows you to fine tune the x-position of the zoom window in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </adjustX>
+                        <adjustY translate="label comment">
+                            <label>Y Position</label>
+                            <comment>Allows you to fine tune the y-position of the zoom window in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </adjustY>
+                        <smoothMove translate="label comment">
+                            <label>Smooth Move</label>
+                            <comment>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_smoothmove</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smoothMove>
+                        <showTitle translate="label comment">
+                            <label>Show Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showTitle>
+                        <titleOpacity translate="label comment">
+                            <label>Title Opacity</label>
+                            <comment>Specifies the opacity of the title if displayed, where 0 is fully transparent, and 1 is fully opaque.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_opacityrange</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </titleOpacity>
+                    </fields>
+                </zoomImage>
+
+                <gallery translate="label comment">
+                    <label>Thumbnail Gallery</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <thumbnailwidth translate="label comment">
+                            <label>Thumbnail Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnailwidth>
+                        <thumbnailheight translate="label comment">
+                            <label>Thumbnail Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnailheight>
+                    </fields>
+                </gallery>
+
+                <slider translate="label comment">
+                    <label>Carousel / Slider for the Thumbnail Gallery</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <type translate="label comment">
+                            <label>Carousel Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cloudzoom/system_config_source_carouseltype</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </type>
+                        <options translate="label comment">
+                            <label>Javascript Options</label>
+                            <comment>Start with { and end with }</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </options>
+                    </fields>
+                </slider>
+
+            </groups>
+
+        </optimisewebcloudzoom>
+
+    </sections>
+</config>

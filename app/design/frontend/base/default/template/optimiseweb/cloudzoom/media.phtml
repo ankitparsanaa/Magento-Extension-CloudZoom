@@ -1,0 +1,63 @@
+<?php
+/**
+ * @package     Optimiseweb_CloudZoom
+ * @author      Sid Vel (sid@optimiseweb.co.uk)
+ * @copyright   Copyright (c) 2013 Optimiseweb Ltd
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+
+$mainImagePath = '';
+
+if (count($this->getGalleryImages()) > 1) {
+    $gallery = '<div id="product-images-gallery" class="product-images-gallery clearfix';
+    if ($this->sliderFlexsliderEnable()):
+        $gallery .= ' flexslider';
+    endif;
+    $gallery .= '">';
+    $gallery .= '<ul id="product-images-carousel" class="slides">';
+    foreach ($this->getGalleryImages() as $_image) {
+        $gallery .= '<li>';
+        $gallery .= '<a href="' . $this->getFullImage($this->getProduct(), $_image->getFile()) . '" ';
+        $gallery .= 'rel="useZoom: \'cloudZoom\', smallImage: \'' . $this->getCloudImage($this->getProduct(), $_image->getFile()) . '\', title: \'' . $this->htmlEscape($_image->getLabel()) . '\'" class="cloud-zoom-gallery" title="' . $this->htmlEscape($_image->getLabel()) . '">';
+        $gallery .= '<img src="' . $this->getGalleryImage($this->getProduct(), $_image->getFile()) . '" alt="' . $this->htmlEscape($_image->getLabel()) . '" />';
+        $gallery .= '</a></li>';
+    }
+    $gallery .= '</ul></div>';
+}
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+    <div class="product-image product-image-zoom">
+        <a rel="<?php echo $this->renderCloudOptions(); ?>" href="<?php echo $this->getFullImage($_product); ?>" class="cloud-zoom" id="cloudZoom">
+    <?php
+    $_img = '<img id="image" src="' . $this->getCloudImage($_product) . '" alt="' . $this->htmlEscape($this->getImageLabel()) . '" title="' . $this->htmlEscape($this->getImageLabel()) . '" />';
+    echo $_img;
+    ?>
+        </a>
+    </div>
+    <?php if (isset($gallery)): ?>
+        <?php echo $gallery; ?>
+    <?php endif; ?>
+<?php else: ?>
+    <div class="product-image">
+    <?php
+    $_img = '<img src="' . $this->helper('catalog/image')->init($_product, 'image')->resize($this->imageWidth()) . '" alt="' . $this->htmlEscape($this->getImageLabel()) . '" title="' . $this->htmlEscape($this->getImageLabel()) . '" />';
+    echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+    </div>
+    <?php endif; ?>
+
+<?php if ($this->sliderJcarouselEnable()): ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#product-images-carousel').jcarousel(<?php echo $this->sliderOptions(); ?>);
+        });
+    </script>
+<?php elseif ($this->sliderFlexsliderEnable()): ?>
+    <script type="text/javascript">
+        jQuery(window).load(function() {
+            jQuery('#product-images-gallery').flexslider(<?php echo $this->sliderOptions(); ?>);
+        });
+    </script>
+<?php endif; ?>
