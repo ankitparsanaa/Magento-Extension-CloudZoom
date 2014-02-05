@@ -3,7 +3,7 @@
 /**
 * @package    Optimiseweb_CloudZoom
 * @author     Kathir Vel (sid@optimiseweb.co.uk)
-* @copyright  Copyright (c) 2013 Optimiseweb Ltd
+* @copyright  Copyright (c) 2014 Optimise Web
 * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 */
 -->
@@ -29,15 +29,22 @@
 
             <groups>
 
-                <general translate="label comment">
+                <general translate="label comment" module="cloudzoom">
                     <label>General</label>
                     <frontend_type>text</frontend_type>
+                    <comment>
+<![CDATA[
+<div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+This module is developed by <a href="http://www.kathirvel.com/?utm_source=magento_module&utm_medium=magento_module_credit&utm_campaign=optimiseweb_cloudzoom" target="_blank">Kathir 'Sid' Vel</a> for <a href="http://optimiseweb.co.uk/?utm_source=magento_module&utm_medium=magento_module_credit&utm_campaign=optimiseweb_cloudzoom" target="_blank">Optimise Web</a> - Magento Specialists in Scotland.
+</div>
+]]>
+                    </comment>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <enabled translate="label comment">
+                        <enabled translate="label comment tooltip" module="cloudzoom">
                             <label>Enable Clould Zoom</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
@@ -46,9 +53,29 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </enabled>
-                        <disableSmallImageZoom translate="label comment">
+                        <loadjs translate="label comment tooltip" module="cloudzoom">
+                            <label>Load ClouldZoom.min.js?</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>The module comes with version 1.0.3 of CloudZoom inside skin/frontend/base/default/optimiseweb/cloudzoom1. You will have to load the JS file manually, if you set this option to No.</tooltip>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loadjs>
+                        <loadcss translate="label comment tooltip" module="cloudzoom">
+                            <label>Load ClouldZoom.css?</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>The module comes with version 1.0.3 of CloudZoom inside skin/frontend/base/default/optimiseweb/cloudzoom1. You will have to load the CSS file manually, if you set this option to No.</tooltip>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loadcss>
+                        <disableSmallImageZoom translate="label comment tooltip" module="cloudzoom">
                             <label>Disable Smaller Image Zooming</label>
-                            <comment>Disables zooming on images where the source image's dimensions are smaller than the displayed image. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</comment>
+                            <tooltip>Disables zooming on images where the source image's dimensions are smaller than the displayed image. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>2</sort_order>
@@ -56,9 +83,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </disableSmallImageZoom>
-                        <disableImageZoom translate="label comment">
+                        <disableImageZoom translate="label comment tooltip" module="cloudzoom">
                             <label>Disable Zooming</label>
-                            <comment>Disables image zooming for all images. Image swap will still work when clicking the gallery of images. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</comment>
+                            <tooltip>Disables image zooming for all images. Image swap will still work when clicking the gallery of images. This will work out of the box only if the ZoomImage > Position is set to Inside Original Image. For other positions, you will have to leave the Zoom Image Width and Height blank.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>3</sort_order>
@@ -69,7 +96,7 @@
                     </fields>
                 </general>
 
-                <originalImage translate="label comment">
+                <originalImage translate="label comment" module="cloudzoom">
                     <label>Main Image</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>2</sort_order>
@@ -77,7 +104,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <imageWidth translate="label comment">
+                        <imageWidth translate="label comment tooltip" module="cloudzoom">
                             <label>Width</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
@@ -85,7 +112,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </imageWidth>
-                        <imageHeight translate="label comment">
+                        <imageHeight translate="label comment tooltip" module="cloudzoom">
                             <label>Height</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
@@ -93,9 +120,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </imageHeight>
-                        <lensOpacity translate="label comment">
+                        <lensOpacity translate="label comment tooltip" module="cloudzoom">
                             <label>Lens Opacity</label>
-                            <comment>Opacity of the lens mouse pointer, where 0 is fully transparent, and 1 is fully opaque. In tint and soft-focus modes, it will always be transparent.</comment>
+                            <tooltip>Opacity of the lens mouse pointer, where 0 is fully transparent, and 1 is fully opaque. In tint and soft-focus modes, it will always be transparent.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_opacityrange</source_model>
                             <sort_order>3</sort_order>
@@ -103,18 +130,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </lensOpacity>
-                        <tint translate="label comment">
+                        <tint translate="label comment tooltip" module="cloudzoom">
                             <label>Overlay Color</label>
-                            <comment>Specifies a tint colour which will cover the small image. Colours should be specified in hex format, e.g. '#aa00aa'. Does not work with softFocus.</comment>
+                            <tooltip>Specifies a tint colour which will cover the small image. Colours should be specified in hex format, e.g. '#aa00aa'. Does not work with softFocus.</tooltip>
                             <frontend_type>text</frontend_type>
                             <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </tint>
-                        <tintOpacity translate="label comment">
+                        <tintOpacity translate="label comment tooltip" module="cloudzoom">
                             <label>Overlay Color Opacity</label>
-                            <comment>Opacity of the tint, where 0 is fully transparent, and 1 is fully opaque.</comment>
+                            <tooltip>Opacity of the tint, where 0 is fully transparent, and 1 is fully opaque.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_opacityrange</source_model>
                             <sort_order>5</sort_order>
@@ -122,9 +149,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </tintOpacity>
-                        <softFocus translate="label comment">
+                        <softFocus translate="label comment tooltip" module="cloudzoom">
                             <label>Soft Focus</label>
-                            <comment>Applies a subtle blur effect to the small image. Set to true or false. Does not work with tint.</comment>
+                            <tooltip>Applies a subtle blur effect to the small image. Set to true or false. Does not work with tint.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>6</sort_order>
@@ -135,7 +162,7 @@
                     </fields>
                 </originalImage>
 
-                <zoomImage translate="label comment">
+                <zoomImage translate="label comment" module="cloudzoom">
                     <label>Zoom Image</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>3</sort_order>
@@ -143,27 +170,27 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <zoomWidth translate="label comment">
+                        <zoomWidth translate="label comment tooltip" module="cloudzoom">
                             <label>Width</label>
                             <frontend_type>text</frontend_type>
-                            <comment>The width of the zoom window in pixels. If 'auto' is specified, the width will be the same as the small image.</comment>
+                            <tooltip>The width of the zoom window in pixels. If 'auto' is specified, the width will be the same as the small image.</tooltip>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </zoomWidth>
-                        <zoomHeight translate="label comment">
+                        <zoomHeight translate="label comment tooltip" module="cloudzoom">
                             <label>Height</label>
-                            <comment>The height of the zoom window in pixels. If 'auto' is specified, the height will be the same as the small image.</comment>
+                            <tooltip>The height of the zoom window in pixels. If 'auto' is specified, the height will be the same as the small image.</tooltip>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </zoomHeight>
-                        <position translate="label comment">
+                        <position translate="label comment tooltip" module="cloudzoom">
                             <label>Position</label>
-                            <comment>Specifies the position of the zoom window relative to the small image. The above Width and Height are ignored if the position is set to Inside Original Image.</comment>
+                            <tooltip>Specifies the position of the zoom window relative to the small image. The above Width and Height are ignored if the position is set to Inside Original Image.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_position</source_model>
                             <sort_order>3</sort_order>
@@ -171,27 +198,27 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </position>
-                        <adjustX translate="label comment">
+                        <adjustX translate="label comment tooltip" module="cloudzoom">
                             <label>X Position</label>
-                            <comment>Allows you to fine tune the x-position of the zoom window in pixels.</comment>
+                            <tooltip>Allows you to fine tune the x-position of the zoom window in pixels.</tooltip>
                             <frontend_type>text</frontend_type>
                             <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </adjustX>
-                        <adjustY translate="label comment">
+                        <adjustY translate="label comment tooltip" module="cloudzoom">
                             <label>Y Position</label>
-                            <comment>Allows you to fine tune the y-position of the zoom window in pixels.</comment>
+                            <tooltip>Allows you to fine tune the y-position of the zoom window in pixels.</tooltip>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </adjustY>
-                        <smoothMove translate="label comment">
+                        <smoothMove translate="label comment tooltip" module="cloudzoom">
                             <label>Smooth Move</label>
-                            <comment>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</comment>
+                            <tooltip>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_smoothmove</source_model>
                             <sort_order>6</sort_order>
@@ -199,7 +226,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </smoothMove>
-                        <showTitle translate="label comment">
+                        <showTitle translate="label comment tooltip" module="cloudzoom">
                             <label>Show Title</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
@@ -208,9 +235,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </showTitle>
-                        <titleOpacity translate="label comment">
+                        <titleOpacity translate="label comment tooltip" module="cloudzoom">
                             <label>Title Opacity</label>
-                            <comment>Specifies the opacity of the title if displayed, where 0 is fully transparent, and 1 is fully opaque.</comment>
+                            <tooltip>Specifies the opacity of the title if displayed, where 0 is fully transparent, and 1 is fully opaque.</tooltip>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_opacityrange</source_model>
                             <sort_order>8</sort_order>
@@ -221,7 +248,7 @@
                     </fields>
                 </zoomImage>
 
-                <gallery translate="label comment">
+                <gallery translate="label comment" module="cloudzoom">
                     <label>Thumbnail Gallery</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>4</sort_order>
@@ -229,7 +256,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <thumbnailwidth translate="label comment">
+                        <thumbnailwidth translate="label comment tooltip" module="cloudzoom">
                             <label>Thumbnail Width</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
@@ -237,7 +264,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </thumbnailwidth>
-                        <thumbnailheight translate="label comment">
+                        <thumbnailheight translate="label comment tooltip" module="cloudzoom">
                             <label>Thumbnail Height</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
@@ -248,7 +275,7 @@
                     </fields>
                 </gallery>
 
-                <slider translate="label comment">
+                <slider translate="label comment" module="cloudzoom">
                     <label>Carousel / Slider for the Thumbnail Gallery</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>5</sort_order>
@@ -256,7 +283,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <type translate="label comment">
+                        <type translate="label comment tooltip" module="cloudzoom">
                             <label>Carousel Type</label>
                             <frontend_type>select</frontend_type>
                             <source_model>cloudzoom/system_config_source_carouseltype</source_model>
@@ -265,9 +292,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </type>
-                        <options translate="label comment">
+                        <options translate="label comment tooltip" module="cloudzoom">
                             <label>Javascript Options</label>
-                            <comment>Start with { and end with }</comment>
+                            <tooltip>Start with { and end with }</tooltip>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
