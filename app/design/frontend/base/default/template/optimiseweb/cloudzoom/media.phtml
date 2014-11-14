@@ -50,14 +50,20 @@ if (count($this->getGalleryImages()) > 1) {
 
 <?php if ($this->sliderJcarouselEnable()): ?>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#product-images-carousel').jcarousel(<?php echo $this->sliderOptions(); ?>);
         });
     </script>
 <?php elseif ($this->sliderFlexsliderEnable()): ?>
     <script type="text/javascript">
-        jQuery(window).load(function() {
+        jQuery(window).load(function () {
             jQuery('#product-images-gallery').flexslider(<?php echo $this->sliderOptions(); ?>);
+        });
+    </script>
+<?php elseif ($this->sliderBxsliderEnable()): ?>
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+            jQuery('#product-images-carousel').bxSlider(<?php echo $this->sliderOptions(); ?>);
         });
     </script>
 <?php endif; ?>

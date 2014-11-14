@@ -22,6 +22,10 @@ class Optimiseweb_CloudZoom_Model_System_Config_Source_Carouseltype
                             'label' => 'No Slider'
                     ),
                     array(
+                            'value' => 'bxslider',
+                            'label' => 'BxSlider'
+                    ),
+                    array(
                             'value' => 'flexslider',
                             'label' => 'FlexSlider'
                     ),

@@ -8,6 +8,25 @@
 */
 -->
 <config>
+    <menu>
+        <optimiseweball translate="title" module="cloudzoom">
+            <title>Optimise Web</title>
+            <sort_order>71</sort_order>
+            <children>
+                <cloudzoom translate="title" module="cloudzoom">
+                    <title>Cloud Zoom Settings</title>
+                    <sort_order>5</sort_order>
+                    <action>adminhtml/system_config/edit/section/optimisewebcloudzoom</action>
+                    <depends>
+                        <config>optimisewebcloudzoom/menu/cloudzoom_enabled</config>
+                    </depends>
+                </cloudzoom>
+            </children>
+            <depends>
+                <config>optimisewebcloudzoom/menu/optimiseweball_enabled</config>
+            </depends>
+        </optimiseweball>
+    </menu>
     <acl>
         <resources>
             <all>

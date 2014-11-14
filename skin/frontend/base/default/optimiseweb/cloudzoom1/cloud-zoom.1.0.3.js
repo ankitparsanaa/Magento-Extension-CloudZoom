@@ -8,12 +8,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 (function ($) {
-   
+
     // Get the path of executing script.
     var scripts = document.getElementsByTagName("script");
-    var last = scripts[scripts.length-1].src.lastIndexOf('/');
-    var scriptPath = scripts[scripts.length-1].src.slice(0,last);
-        
+    var last = scripts[scripts.length - 1].src.lastIndexOf('/');
+    var scriptPath = scripts[scripts.length - 1].src.slice(0, last);
+
     $(document).ready(function () {
         $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
     });
@@ -26,26 +26,26 @@
     }
 
     function CloudZoom(jWin, opts) {
-     
+
         var sImg = $('img', jWin);
-        var	img1;
-        var	img2;
+        var img1;
+        var img2;
         var zoomDiv = null;
-        var	$mouseTrap = null;
-        var	lens = null;
-        var	$tint = null;
-        var	softFocus = null;
-        var	$ie6Fix = null;
-        var	zoomImage;
-        var controlTimer = 0;      
+        var $mouseTrap = null;
+        var lens = null;
+        var $tint = null;
+        var softFocus = null;
+        var $ie6Fix = null;
+        var zoomImage;
+        var controlTimer = 0;
         var cw, ch;
         var destU = 0;
-        var	destV = 0;
+        var destV = 0;
         var currV = 0;
-        var currU = 0;      
+        var currU = 0;
         var filesLoaded = 0;
         var mx,
-        my; 
+                my;
         var ctx = this, zw;
         // Display an image loading message. This message gets deleted when the images have loaded and the zoom init function is called.
         // We add a small delay before the message is displayed to avoid the message flicking on then off again virtually immediately if the
@@ -73,7 +73,7 @@
             //$mouseTrap.unbind();
             if (lens) {
                 lens.remove();
-                lens = null;             
+                lens = null;
             }
             if ($tint) {
                 $tint.remove();
@@ -103,26 +103,26 @@
             }
             //ie6FixRemove();
             this.removeBits();
-        // DON'T FORGET TO REMOVE JQUERY 'DATA' VALUES
+            // DON'T FORGET TO REMOVE JQUERY 'DATA' VALUES
         };
 
 
         // This is called when the zoom window has faded out so it can be removed.
         this.fadedOut = function () {
-            
+
             if (zoomDiv) {
                 zoomDiv.remove();
                 zoomDiv = null;
             }
             this.removeBits();
-        //ie6FixRemove();
+            //ie6FixRemove();
         };
 
         this.controlLoop = function () {
             if (lens) {
                 var x = (mx - sImg.offset().left - (cw * 0.5)) >> 0;
                 var y = (my - sImg.offset().top - (ch * 0.5)) >> 0;
-               
+
                 if (x < 0) {
                     x = 0;
                 }
@@ -147,7 +147,7 @@
                 currU += (destU - currU) / opts.smoothMove;
                 currV += (destV - currV) / opts.smoothMove;
 
-                zoomDiv.css('background-position', (-(currU >> 0) + 'px ') + (-(currV >> 0) + 'px'));              
+                zoomDiv.css('background-position', (-(currU >> 0) + 'px ') + (-(currV >> 0) + 'px'));
             }
             controlTimer = setTimeout(function () {
                 ctx.controlLoop();
@@ -174,20 +174,20 @@
 
 
             /* Add a box (mouseTrap) over the small image to trap mouse events.
-		It has priority over zoom window to avoid issues with inner zoom.
-		We need the dummy background image as IE does not trap mouse events on
-		transparent parts of a div.
-		*/
+             It has priority over zoom window to avoid issues with inner zoom.
+             We need the dummy background image as IE does not trap mouse events on
+             transparent parts of a div.
+             */
             var $m = $("<div class='mousetrap' style='background-image:url(\"" + scriptPath + "/blank.png\")" + "\'></div>");
             $mouseTrap = jWin.parent().append($m).find(':last');
-            $mouseTrap = $('.mousetrap',jWin.parent());
+            $mouseTrap = $('.mousetrap', jWin.parent());
             $mouseTrap.css({
-                width:sImg.outerWidth(),
-                height:sImg.outerHeight(),
-                top:0,
-                left:0,
-                position:'absolute',
-                zIndex:9999
+                width: sImg.outerWidth(),
+                height: sImg.outerHeight(),
+                top: 0,
+                left: 0,
+                position: 'absolute',
+                zIndex: 9999
             });
             //////////////////////////////////////////////////////////////////////			
             /* Do as little as possible in mousemove event to prevent slowdown. */
@@ -195,24 +195,24 @@
                 // Just update the mouse position
                 mx = event.pageX;
                 my = event.pageY;
-               
+
             });
             //////////////////////////////////////////////////////////////////////					
             $mouseTrap.bind('mouseleave', this, function (event) {
                 clearTimeout(controlTimer);
                 //event.data.removeBits();                
-                if(lens) {
+                if (lens) {
                     lens.fadeOut(299);
                 }
-                if($tint) {
+                if ($tint) {
                     $tint.fadeOut(299);
                 }
-                if(softFocus) {
+                if (softFocus) {
                     softFocus.fadeOut(299);
                 }
                 zoomDiv.fadeOut(300, function () {
                     ctx.fadedOut();
-                });																
+                });
                 return false;
             });
             //////////////////////////////////////////////////////////////////////			
@@ -226,8 +226,8 @@
                 }
 
                 var xPos = opts.adjustX,
-                yPos = opts.adjustY;
-                             
+                        yPos = opts.adjustY;
+
                 var siw = sImg.outerWidth();
                 var sih = sImg.outerHeight();
 
@@ -258,7 +258,7 @@
                         w = siw;
                         h = sih;
                         break;
-                    // All other values, try and find an id in the dom to attach to.
+                        // All other values, try and find an id in the dom to attach to.
                     default:
                         appendTo = $('#' + opts.position);
                         // If dom element doesn't exit, just use 'right' position as default.
@@ -273,10 +273,10 @@
                 }
 
                 zoomDiv = appendTo.append(format('<div id="cloud-zoom-big" class="cloud-zoom-big" style="display:none;position:absolute;left:%0px;top:%1px;width:%2px;height:%3px;background-image:url(\'%4\');z-index:99;"></div>', xPos, yPos, w, h, zoomImage.src)).find(':last');
-                zoomDiv = $('.cloud-zoom-big',appendTo);
+                zoomDiv = $('.cloud-zoom-big', appendTo);
                 // Add the title from title tag.
                 if (sImg.attr('title') && opts.showTitle) {
-                    zoomDiv.append(format('<div class="cloud-zoom-title">%0</div>', sImg.attr('title'))); 
+                    zoomDiv.append(format('<div class="cloud-zoom-title">%0</div>', sImg.attr('title')));
                     $('.cloud-zoom-title', zoomDiv).css('opacity', opts.titleOpacity);
                 }
 
@@ -303,7 +303,7 @@
 
                 // Attach mouse, initially invisible to prevent first frame glitch
                 lens = jWin.append(format("<div class = 'cloud-zoom-lens' style='display:none;z-index:98;position:absolute;width:%0px;height:%1px;'></div>", cw, ch)).find(':last');
-                lens = $('.cloud-zoom-lens',jWin);
+                lens = $('.cloud-zoom-lens', jWin);
                 $mouseTrap.css('cursor', lens.css('cursor'));
 
                 var noTrans = false;
@@ -312,9 +312,9 @@
                 if (opts.tint) {
                     lens.css('background', 'url("' + sImg.attr('src') + '")');
                     $tint = jWin.append(format('<div class="cloud-zoom-tint" style="display:none;position:absolute; left:0px; top:0px; width:%0px; height:%1px; background-color:%2;" />', sImg.outerWidth(), sImg.outerHeight(), opts.tint)).find(':last');
-                    $tint = $('.cloud-zoom-tint',jWin);
-                    
-                    $tint.css('opacity', opts.tintOpacity);                    
+                    $tint = $('.cloud-zoom-tint', jWin);
+
+                    $tint.css('opacity', opts.tintOpacity);
                     noTrans = true;
                     $tint.fadeIn(500);
 
@@ -322,7 +322,7 @@
                 if (opts.softFocus) {
                     lens.css('background', 'url("' + sImg.attr('src') + '")');
                     jWin.append(format('<div class="cloud-zoom-soft" style="position:absolute;display:none;top:2px; left:2px; width:%0px; height:%1px;" />', sImg.outerWidth() - 2, sImg.outerHeight() - 2, opts.tint));
-                    softFocus = $('.cloud-zoom-soft',jWin);
+                    softFocus = $('.cloud-zoom-soft', jWin);
                     softFocus.css('background', 'url("' + sImg.attr('src') + '")');
                     softFocus.css('opacity', 0.5);
                     noTrans = true;
@@ -330,9 +330,9 @@
                 }
 
                 if (!noTrans) {
-                    lens.css('opacity', opts.lensOpacity);										
+                    lens.css('opacity', opts.lensOpacity);
                 }
-                if ( opts.position !== 'inside' ) {
+                if (opts.position !== 'inside') {
                     lens.fadeIn(500);
                 }
 
@@ -360,9 +360,10 @@
         // IE6 background image flicker fix
         try {
             document.execCommand("BackgroundImageCache", false, true);
-        } catch (e) {}
+        } catch (e) {
+        }
         this.each(function () {
-            var	relOpts, opts;
+            var relOpts, opts;
             // Hmm...eval...slap on wrist.
             eval('var	a = {' + $(this).attr('rel') + '}');
             relOpts = a;

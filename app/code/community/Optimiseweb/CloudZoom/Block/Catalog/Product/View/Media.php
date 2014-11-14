@@ -114,7 +114,7 @@ class Optimiseweb_CloudZoom_Block_Catalog_Product_View_Media extends Mage_Catalo
                 $imageWidth = $imageObj->getOriginalWidth();
                 $imageHeight = $imageObj->getOriginalHeight();
             }
-            if (($imageWidth < $this->imageWidth()) AND ($imageHeight < $this->imageHeight())) {
+            if (($imageWidth < $this->imageWidth()) AND ( $imageHeight < $this->imageHeight())) {
                 return $this->getCloudImage($product, $imageFile);
             }
         }
@@ -214,6 +214,18 @@ class Optimiseweb_CloudZoom_Block_Catalog_Product_View_Media extends Mage_Catalo
     public function sliderFlexsliderEnable()
     {
         if ($this->getConfig('slider/type') == 'flexslider') {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    /**
+     *
+     * @return boolean
+     */
+    public function sliderBxsliderEnable()
+    {
+        if ($this->getConfig('slider/type') == 'bxslider') {
             return TRUE;
         }
         return FALSE;
